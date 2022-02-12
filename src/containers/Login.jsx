@@ -1,4 +1,7 @@
 import React from 'react';
+import googleIcon from '../assets/static/google-icon.png';
+import twitterIcon from '../assets/static/twitter-icon.png';
+import '../assets/styles/components/Login.scss';
 
 function Login() {
   return (
@@ -19,12 +22,12 @@ function Login() {
         </form>
         <section className='login__container--social-media'>
           <div>
-            <img src='../assets/google-icon.png' alt='img' />
+            <img src={googleIcon} alt='img' />
             {' '}
             Inicia sesión con Google
           </div>
           <div>
-            <img src='../assets/twitter-icon.png' alt='img' />
+            <img src={twitterIcon} alt='img' />
             {' '}
             Inicia sesión con Twitter
           </div>
