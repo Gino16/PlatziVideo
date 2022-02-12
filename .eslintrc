@@ -4,6 +4,9 @@
     "es6": true,
     "node": true
   },
+  "parserOptions": {
+    "requireConfigFile": false
+  },
   "extends": ["airbnb"],
   "globals": {
     "document": false,
@@ -17,7 +20,7 @@
     "expect": true,
     "sinon": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "plugins": [
     "react",
     "jsx-a11y",

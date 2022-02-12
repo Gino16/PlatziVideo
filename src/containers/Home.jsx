@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from './../components/Header';
+import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
@@ -10,7 +10,7 @@ import './../assets/styles/App.scss';
 
 const API = 'http://localhost:3000/initialState';
 
-const App = () => {
+const Home = () => {
 
   const initialState = useInitialState(API);
 
@@ -49,4 +49,4 @@ const App = () => {
       </div>
 )};
 
-export default App;
+export default Home;
