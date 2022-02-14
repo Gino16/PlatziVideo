@@ -1,10 +1,14 @@
 import React from 'react';
-import '../assets/styles/components/Header.scss';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { gravatar } from '../utils/gravatar';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
-import user from '../assets/static/user-icon.png';
+import userIcon from '../assets/static/user-icon.png';
+import '../assets/styles/components/Header.scss';
 
-function Header() {
+function Header(props) {
+  const { user } = props;
+
   return (
     <header className='header'>
       <Link to='/'>
@@ -12,7 +16,7 @@ function Header() {
       </Link>
       <div className='header__menu'>
         <div className='header__menu--profile'>
-          <img src={user} alt='' />
+          <img src={user ? gravatar(user.email) : userIcon} alt='' />
           <p>Perfil</p>
         </div>
         <ul>
@@ -24,4 +28,10 @@ function Header() {
   );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(null, mapStateToProps)(Header);
