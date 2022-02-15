@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { registerRequest } from '../actions';
 import '../assets/styles/components/Register.scss';
 
-function Register() {
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    const navigate = useNavigate();
+    return (
+      <Component
+        {...props}
+        navigate={navigate}
+      />
+    );
+  }
+
+  return ComponentWithRouterProp;
+}
+
+function Register(props) {
   const [form, setValues] = useState({
     email: '',
     name: '',
@@ -18,7 +34,9 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form);
+    props.registerRequest(form);
+    props.navigate('/');
+    // console.log(form);
   };
 
   return (
@@ -37,4 +55,8 @@ function Register() {
   );
 }
 
-export default Register;
+const mapDispatchToProps = {
+  registerRequest,
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(Register));
